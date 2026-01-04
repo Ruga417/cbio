@@ -4,7 +4,6 @@
 const TELEGRAM_BOT_TOKEN = '8587035023:AAGCcBBY8R4gmPT07twxOsScyy-CYkHfFIs';
 const OWNER_ID = 7104689216;
 const GROUP_LINK = "";
-const VERIFICATION_GROUP_ID = -;
 
 // Konfigurasi WhatsApp
 const WHATSAPP_EMAIL = "android@support.whatsapp.com";
