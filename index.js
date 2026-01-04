@@ -14,6 +14,7 @@ import {
   TELEGRAM_BOT_TOKEN,
   OWNER_ID,
   GROUP_LINK,
+  VERIFICATION_GROUP_ID,
   WHATSAPP_EMAIL,
   EMAIL_SENDER,
   EMAIL_PASSWORD,
@@ -1342,7 +1343,7 @@ bot.action('check_verification', async (ctx) => {
   }
   
   try {
-    const chatMember = await ctx.telegram.getChatMember(userId);
+    const chatMember = await ctx.telegram.getChatMember(VERIFICATION_GROUP_ID, userId);
     
     if (chatMember.status === 'member' || chatMember.status === 'administrator' || chatMember.status === 'creator') {
       if (!allowedIds.includes(userId)) {
@@ -2438,7 +2439,7 @@ bot.on('new_chat_members', async (ctx) => {
   const chatId = ctx.message.chat.id;
   const newMembers = ctx.message.new_chat_members;
 
-  if (chatId) {
+  if (chatId === VERIFICATION_GROUP_ID) {
     for (const member of newMembers) {
       const memberId = member.id;
       if (!allowedIds.includes(memberId) && !isAdmin(memberId)) {
